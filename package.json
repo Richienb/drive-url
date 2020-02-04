@@ -18,7 +18,9 @@
 		"test": "yarn lint && ava"
 	},
 	"keywords": [],
-	"dependencies": {},
+	"dependencies": {
+		"ow": "^0.15.1"
+	},
 	"devDependencies": {
 		"ava": "^3.0.0",
 		"eslint-config-richienb": "^0.3.0",

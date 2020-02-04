@@ -9,6 +9,6 @@
  * //=> 'unicorns & rainbows'
  * ```
 */
-declare function theModule(input: string, { postfix }: { postfix?: string }): string;
+declare function driveURL(url: string, apikey?: string): string;
 
-export = theModule;
+export = driveURL;
