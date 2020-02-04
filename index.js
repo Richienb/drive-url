@@ -2,7 +2,7 @@
 
 const { default: ow } = require("ow")
 
-const formats = [/https:\/\/drive\.google\.com\/file\/d\/(?<id>.*?)\/(edit|view)\?usp=sharing/, /https:\/\/drive\.google\.com\/open\?id=(?<id>.*?)$/]
+const formats = [/https:\/\/drive\.google\.com\/file\/d\/(?<id>.*?)\/(?:edit|view)\?usp=sharing/, /https:\/\/drive\.google\.com\/open\?id=(?<id>.*?)$/]
 
 const alphanumeric = /^[a-zA-Z0-9\-_]+$/
 
@@ -25,5 +25,5 @@ module.exports = (url, apiKey) => {
 	}
 
 	if (apiKey) return "https://www.googleapis.com/drive/v3/files/" + id + "?alt=media&key=" + apiKey.trim()
-	else return "https://drive.google.com/uc?export=download&id=" + id
+	return "https://drive.google.com/uc?export=download&id=" + id
 }

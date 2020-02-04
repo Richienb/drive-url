@@ -1,41 +1,36 @@
-# The module [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/the-module/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/the-module)
+# Drive URL [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/drive-url/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/drive-url)
 
-My awesome module.
+Generate a Google Drive direct download link based on the URL or ID.
 
-[![NPM Badge](https://nodei.co/npm/the-module.png)](https://npmjs.com/package/the-module)
+[![NPM Badge](https://nodei.co/npm/drive-url.png)](https://npmjs.com/package/drive-url)
 
 ## Install
 
 ```sh
-npm install the-module
+npm install drive-url
 ```
 
 ## Usage
 
 ```js
-const theModule = require("the-module");
+const driveURL = require("drive-url");
 
-theModule("unicorns");
-//=> 'unicorns & rainbows'
+driveURL("https://drive.google.com/file/d/1Px8bePd7pFSz5r6bTA7GKN9HloCzMfFk/view?usp=sharing");
+//=> 'https://drive.google.com/uc?export=download&id=1Px8bePd7pFSz5r6bTA7GKN9HloCzMfFk'
 ```
 
 ## API
 
-### theModule(input, options?)
+### driveURL(url, apiKey?)
 
-#### input
+#### url
 
 Type: `string`
 
-Lorem ipsum.
+The url or id of the drive content.
 
-#### options
+#### apiKey
 
-Type: `object`
+Type: `string`
 
-##### postfix
-
-Type: `string`\
-Default: `rainbows`
-
-Lorem ipsum.
+A drive api key that can be used to exceed the download limit of 100MB.

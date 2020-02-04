@@ -1,8 +1,8 @@
 {
-	"name": "the-module",
+	"name": "drive-url",
 	"version": "0.0.0",
-	"description": "My awesome module.",
-	"repository": "https://github.com/Richienb/the-module.git",
+	"description": "Generate a Google Drive direct download link based on the URL or ID.",
+	"repository": "https://github.com/Richienb/drive-url.git",
 	"author": "Richie Bendall <richiebendall@gmail.com>",
 	"license": "MIT",
 	"main": "index.js",
@@ -17,7 +17,16 @@
 		"lint": "xo",
 		"test": "yarn lint && ava"
 	},
-	"keywords": [],
+	"keywords": [
+		"google",
+		"drive",
+		"url",
+		"download",
+		"id",
+		"direct",
+		"save",
+		"link"
+	],
 	"dependencies": {
 		"ow": "^0.15.1"
 	},
