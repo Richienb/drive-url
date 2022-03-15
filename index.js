@@ -5,8 +5,8 @@ const formats = [/https:\/\/drive\.google\.com\/file\/d\/(?<id>.*?)\/(?:edit|vie
 const alphanumeric = /^[a-zA-Z0-9\-_]+$/
 
 module.exports = (url, apiKey) => {
-	if (!(typeof url === "string") || (typeof url === "string" && !url)) throw new Error("Invalid URL provided.")
-	if (typeof apiKey === "string" && (!apiKey || !alphanumeric.test(apiKey))) throw new Error("Invalid api key provided.")
+	if (typeof url !== "string") throw new Error("Invalid URL provided.")
+	if (typeof apiKey === "string" && !alphanumeric.test(apiKey)) throw new Error("Invalid api key provided.")
 
 	url = url.trim()
 
