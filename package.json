@@ -15,7 +15,7 @@
 	},
 	"scripts": {
 		"lint": "xo",
-		"test": "yarn lint && ava"
+		"test": "yarn lint && uvu"
 	},
 	"keywords": [
 		"google",
@@ -28,7 +28,7 @@
 		"link"
 	],
 	"devDependencies": {
-		"ava": "^3.0.0",
+		"uvu": "^0.5.3",
 		"eslint-config-richienb": "^0.3.0",
 		"xo": "^0.25.3"
 	},
