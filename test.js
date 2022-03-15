@@ -1,5 +1,5 @@
 const { test } = require("uvu")
-const { is } = require("uvu/assert")
+const { is, throws } = require("uvu/assert")
 const driveURL = require(".")
 
 test("main", () => {
@@ -8,29 +8,11 @@ test("main", () => {
 })
 
 test("errors", () => {
-	try {
-		driveURL(null)
-	} catch (error) {
-		is(error.message, "Invalid URL provided.")
-	}
+	throws(() => driveURL(null), ({ message }) => message === "Invalid URL provided.")
+	throws(() => driveURL(""), ({ message }) => message === "Invalid URL provided.")
 
-	try {
-		driveURL("")
-	} catch (error) {
-		is(error.message, "Invalid URL provided.")
-	}
-
-	try {
-		driveURL("url", "")
-	} catch (error) {
-		is(error.message, "Invalid api key provided.")
-	}
-
-	try {
-		driveURL("url", "$$$")
-	} catch (error) {
-		is(error.message, "Invalid api key provided.")
-	}
+	throws(() => driveURL("url", ""), ({ message }) => message === "Invalid api key provided.")
+	throws(() => driveURL("url", "$$$"), ({ message }) => message === "Invalid api key provided.")
 })
 
 test.run()
