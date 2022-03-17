@@ -1,6 +1,6 @@
 {
 	"name": "drive-url",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Generate a Google Drive direct download link based on the URL or ID.",
 	"repository": "https://github.com/Richienb/drive-url.git",
 	"author": "Richie Bendall <richiebendall@gmail.com>",
