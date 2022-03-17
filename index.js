@@ -2,7 +2,7 @@
 
 const formats = [/https:\/\/drive\.google\.com\/file\/d\/(?<id>.*?)\/(?:edit|view)\?usp=sharing/, /https:\/\/drive\.google\.com\/open\?id=(?<id>.*?)$/]
 
-const alphanumeric = /^[a-zA-Z0-9\-_]+$/
+const alphanumeric = /^[\w-]+$/
 
 module.exports = (url, apiKey) => {
 	if (typeof url !== "string") throw new Error("Invalid URL provided.")
