@@ -1,14 +1,12 @@
 "use strict"
 
-const { default: ow } = require("ow")
-
 const formats = [/https:\/\/drive\.google\.com\/file\/d\/(?<id>.*?)\/(?:edit|view)\?usp=sharing/, /https:\/\/drive\.google\.com\/open\?id=(?<id>.*?)$/]
 
-const alphanumeric = /^[a-zA-Z0-9\-_]+$/
+const alphanumeric = /^[\w-]+$/
 
 module.exports = (url, apiKey) => {
-	ow(url, ow.string.minLength(1))
-	ow(apiKey, ow.optional.string.minLength(1).matches(alphanumeric))
+	if (typeof url !== "string") throw new Error("Invalid URL provided.")
+	if (typeof apiKey === "string" && !alphanumeric.test(apiKey)) throw new Error("Invalid api key provided.")
 
 	url = url.trim()
 
