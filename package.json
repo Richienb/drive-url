@@ -2,20 +2,23 @@
 	"name": "drive-url",
 	"version": "1.0.1",
 	"description": "Generate a Google Drive direct download link based on the URL or ID.",
-	"repository": "https://github.com/Richienb/drive-url.git",
-	"author": "Richie Bendall <richiebendall@gmail.com>",
+	"repository": "Richienb/drive-url",
+	"author": {
+		"name": "Richie Bendall",
+		"email": "richiebendall@gmail.com"
+	},
 	"license": "MIT",
-	"main": "index.js",
+	"type": "module",
+	"exports": "./index.js",
 	"files": [
 		"index.js",
 		"index.d.ts"
 	],
 	"engines": {
-		"node": ">=10"
+		"node": ">=12"
 	},
 	"scripts": {
-		"lint": "xo",
-		"test": "xo && uvu"
+		"test": "xo && ava && tsd"
 	},
 	"keywords": [
 		"google",
@@ -28,14 +31,8 @@
 		"link"
 	],
 	"devDependencies": {
-		"uvu": "^0.5.3",
-		"eslint-config-richienb": "^0.3.0",
-		"xo": "^0.25.3"
-	},
-	"resolutions": {
-		"eslint": "^6.8.0"
-	},
-	"xo": {
-		"extends": "richienb/node"
+		"ava": "^4.2.0",
+		"tsd": "^0.20.0",
+		"xo": "^0.48.0"
 	}
 }

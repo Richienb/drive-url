@@ -1,27 +1,34 @@
-"use strict"
+const formatRegexes = new Set([
+	/https:\/\/drive\.google\.com\/file\/d\/(?<id>.*?)\/(?:edit|view)\?usp=sharing/,
+	/https:\/\/drive\.google\.com\/open\?id=(?<id>.*?)$/,
+]);
 
-const formats = [/https:\/\/drive\.google\.com\/file\/d\/(?<id>.*?)\/(?:edit|view)\?usp=sharing/, /https:\/\/drive\.google\.com\/open\?id=(?<id>.*?)$/]
+const alphanumericRegex = /^[\w-]+$/;
 
-const alphanumeric = /^[\w-]+$/
-
-module.exports = (url, apiKey) => {
-	if (typeof url !== "string") throw new Error("Invalid URL provided.")
-	if (typeof apiKey === "string" && !alphanumeric.test(apiKey)) throw new Error("Invalid api key provided.")
-
-	url = url.trim()
-
-	let id
-
-	formats.forEach((regex) => {
-		const matches = url.match(regex)
-		if (matches && matches.groups && matches.groups.id) id = matches.groups.id
-	})
-
-	if (!id) {
-		if (alphanumeric.test(url)) id = url
-		else throw new Error("Invalid URL provided.")
+function extractId(urlOrId) {
+	for (const format of formatRegexes) {
+		if (format.test(urlOrId)) {
+			return format.exec(urlOrId).groups.id;
+		}
 	}
 
-	if (apiKey) return "https://www.googleapis.com/drive/v3/files/" + id + "?alt=media&key=" + apiKey.trim()
-	return "https://drive.google.com/uc?export=download&id=" + id
+	if (alphanumericRegex.test(urlOrId)) {
+		return urlOrId;
+	}
+
+	throw new Error('Invalid URL provided.');
+}
+
+export default function driveUrl(url, {apiKey} = {}) {
+	if (typeof url !== 'string') {
+		throw new TypeError('Invalid URL provided.');
+	}
+
+	if (typeof apiKey === 'string' && !alphanumericRegex.test(apiKey)) {
+		throw new Error('Invalid api key provided.');
+	}
+
+	const id = extractId(url.trim());
+
+	return apiKey ? `https://www.googleapis.com/drive/v3/files/${id}?alt=media&key=${apiKey.trim()}` : `https://drive.google.com/uc?export=download&id=${id}`;
 }
