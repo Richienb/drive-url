@@ -1,5 +1,5 @@
 const formatRegexes = new Set([
-	/https:\/\/drive\.google\.com\/file\/d\/(?<id>.*?)\/(?:edit|view)\?usp=sharing/,
+	/https:\/\/drive\.google\.com\/file\/d\/(?<id>.*?)\/(?:edit|view)\?usp=(drive_link|sharing)/,
 	/https:\/\/drive\.google\.com\/open\?id=(?<id>.*?)$/,
 ]);
 
