@@ -10,6 +10,12 @@ test('main', t => {
 	);
 	t.is(
 		driveUrl(
+			'https://drive.google.com/file/d/1Px8bePd7pFSz5r6bTA7GKN9HloCzMfFk/view?usp=share_link',
+		),
+		'https://drive.google.com/uc?export=download&id=1Px8bePd7pFSz5r6bTA7GKN9HloCzMfFk',
+	);
+	t.is(
+		driveUrl(
 			'https://drive.google.com/file/d/1Px8bePd7pFSz5r6bTA7GKN9HloCzMfFk/view?usp=sharing',
 			{apiKey: 'foo'},
 		),
