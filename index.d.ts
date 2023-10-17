@@ -1,9 +1,9 @@
-export interface Options {
+export type Options = {
 	/**
 	A drive api key that can be used to exceed the download limit of 100MB.
 	*/
 	apiKey?: string;
-}
+};
 
 /**
 Generate a Google Drive direct download link based on the URL or ID.
